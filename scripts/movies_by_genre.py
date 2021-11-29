@@ -1,5 +1,9 @@
-from pyspark import SparkConf, SparkContext
-from pyspark.sql import SparkSession
+#from pyspark import SparkConf, SparkContext
+#from pyspark.sql import SparkSession
+#from pyspark.sql.functions import *
+#Scripts to recommend the N best rated movies by a user-passed genre
+from pyspark import *
+from pyspark.sql import *
 from pyspark.sql.functions import *
 import sys
 import re
@@ -8,10 +12,12 @@ conf = SparkConf().setAppName('Movies_by_genre')
 sc = SparkContext(conf=conf)
 spark = SparkSession.builder.master('local').appName('SparkSQL').getOrCreate()
 
+#Obtains the genre and the number of movies to show by arguments. If the number of movies is not given by the user, 5 is chosen by default
 genre = sys.argv[1]
 movies_to_show = 5 if len(sys.argv)<3 else int(sys.argv[2])
 
-df1 = spark.read.option('header','true').csv('ratings.csv')
+#Obtains the dataframes from the datasets ratings.csv and movies.csv
+df1 = spark.read.option('header','true').csv('datasets/ratings.csv')
 df2 = spark.read.option('header','true').csv('movies.csv')
 
 list_movies = df1.join(df2,'movieId','rightouter') \

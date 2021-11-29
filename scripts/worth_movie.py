@@ -34,3 +34,4 @@ if (len(sys.argv) == 2):
 
 else:
     print("Invalid arguments: The user must provide a movie")
+
