@@ -24,9 +24,9 @@ df2 = spark.read.csv('title.ratings.tsv',sep=r'\t',header=True)
 
 if adult != -1:
 	list_movies = df1.join(df2,'tconst','rightouter') \
-		.select('tconst', 'originalTitle', 'isAdult','avgRating') \
+		.select('tconst', 'originalTitle', 'isAdult','averageRating') \
 		.filter(col('isAdult')==adult) \
-		.orderBy(col('avgRating').desc(),col('originalTitle').asc()) \
+		.orderBy(col('averageRating').desc(),col('originalTitle').asc()) \
 		.limit(movies_to_show) \
 		.rdd \
 		.map(lambda row: (row[1],row[3])) \

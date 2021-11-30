@@ -37,7 +37,6 @@ elif mode == '-i':
 	df1 = spark.read.csv('title.basics.tsv',sep=r'\t',header=True)
         df2 = spark.read.csv('title.ratings.tsv',sep=r'\t',header=True)
 	list_movies = df1.join(df2,'tconst','rightouter') \
-		.withColumn('rating', col('averageRating').cast('float')) \
 		.select('tconst', 'averageRating', 'originalTitle', 'genre') \
 		.filter(col('startYear')==genre) \
 		.orderBy(col('averageRating').desc(),col('originalTitle').asc()) \
