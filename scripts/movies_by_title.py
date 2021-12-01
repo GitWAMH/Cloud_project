@@ -31,7 +31,7 @@ else:
 						.where(df2['primaryTitle'].contains(title) | df2['originalTitle'].contains(title))
 		if not matchedMovies.rdd.isEmpty():
 			for i in matchedMovies.collect():
-				print(i[0] + ', ' + i [1])
+				print(i[0] + ', ' + i [1] + ', ' + i[2])
 		else:
 			print('No results were found for the movie \'' + title + '\'')
 		
