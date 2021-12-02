@@ -8,6 +8,8 @@ URLs_IMDb = ["https://datasets.imdbws.com/name.basics.tsv.gz",
             "https://datasets.imdbws.com/title.episode.tsv.gz"
             "https://datasets.imdbws.com/title.principals.tsv.gz",
             "https://datasets.imdbws.com/title.ratings.tsv.gz"]
+NAMEs_IMDb = ["name.basics", "akas", "title.basics", "title.crew", "title.episode", "title.principals", "title.ratings"]
+TYP_IMDb = ".tsv.gz"
 
 URLs_Movie_Lense = {}
 
@@ -16,7 +18,7 @@ for URL in URLs_IMDb:
     print("Download " + str(x) + " from " + URL)
     r = requests.get(URL, allow_redirects=True)
     print("---" + str(r.status_code) + "---")
-    open(str(x) + '.tsv.gz', 'wb').write(r.content)
+    open(NAMEs_IMDb[x - 1] + TYP_IMDb, 'wb').write(r.content)
     print("--Start unzip--")
     try:
         with gzip.open('file.txt.gz', 'rb') as f:
