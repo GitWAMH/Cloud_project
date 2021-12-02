@@ -15,6 +15,6 @@ Antes de ejecutar los scripts, es necesario importar los siguientes módulos de 
 
 ## Links
 * Github Pages
-** https://pages.github.com/
-** https://docs.github.com/en/pages 
-** https://softwarestacklukas.github.io/group7.github.io/ 
+  * Documentación: https://pages.github.com/
+  * Documentación: https://docs.github.com/en/pages 
+  * Link de la página web: https://softwarestacklukas.github.io/group7.github.io/ 
