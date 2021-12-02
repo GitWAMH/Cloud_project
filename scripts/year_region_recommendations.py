@@ -31,7 +31,9 @@ if (len(sys.argv) > 1):
         df=spark.read.csv("Datasets/title.akas.tsv.gz/data.tsv", sep=r'\t',header=True)
         movies = df.select(df["title"], df["titleId"]).where(df["region"] == region)
         if movies is None:
-            print("Region not found.\t These are some examples of the regions available: UA, FR, DE, HU, RU, US, JP, GB, ES")
+            print("Region not found. These are the regions available:\n")
+            df.select(df["region"]).distinct().collect()
+
         else:
             ratings=spark.read.csv("Datasets/title.ratings.tsv.gz/data.tsv", sep=r'\t', header=True)
             # bestMovies = movies.select(movies["originalTitle"], movies["tconst"]).where(movies["tconst"] == ratings["tconst"]).orderBy(ratings["averageRating"])
