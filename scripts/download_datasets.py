@@ -64,7 +64,7 @@ for URL in URLs_GROUP_LENS:
         open(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS, 'wb').write(r.content)
         print("--- Start unzip ---")    
         try:
-            with ZipFile('Mail3.zip', 'r') as zipObj:
+            with ZipFile(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS, 'r') as zipObj:
                 zipObj.extractall()
         except: print("Something went wrong")
         finally: os.remove(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS)     
