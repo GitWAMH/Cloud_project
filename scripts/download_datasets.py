@@ -6,9 +6,6 @@ from zipfile import ZipFile
 import gzip
 import shutil
 
-from requests.api import delete
-
-
 URLs_IMDb = ["https://datasets.imdbws.com/name.basics.tsv.gz",
              "https://datasets.imdbws.com/title.akas.tsv.gz",
              "https://datasets.imdbws.com/title.basics.tsv.gz",
@@ -20,10 +17,12 @@ NAMEs_IMDb = ["name.basics", "title.akas", "title.basics", "title.crew", "title.
 TYP_ARCHIVE_IMDb = ".tsv.gz"
 TYPE_DATA_IMDb = ".tsv"
 
-URLs_GROUP_LENS = []
-NAMEs_ROUP_LENS = []
-TYP_ARCHIVE_ROUP_LENS = ""
-TYPE_DATA_ROUP_LENS = ""
+URLs_GROUP_LENS = ["https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+                   "https://files.grouplens.org/datasets/movielens/ml-1m.zip",
+                   "https://files.grouplens.org/datasets/movielens/ml-20m.zip"]
+NAMEs_ROUP_LENS = ["MovieLens 100K Dataset ", "MovieLens 1M Dataset", "20M Dataset"]
+TYP_ARCHIVE_ROUP_LENS = ".zip"
+#TYPE_DATA_ROUP_LENS = ""
 
 URLs_Movie_Lense = {}
 
@@ -53,11 +52,26 @@ for URL in URLs_IMDb:
         except: print("Something went wrong")
         finally: os.remove(NAMEs_IMDb[x - 1] + TYP_ARCHIVE_IMDb)     
         print("--- End unzip ---")
-        print("--- Download-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60), 2) + "min ---")
+        print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60), 2) + "min ---")
     else: print("Download failed")
-    x = x + 1 #Increment for the next dataset
+    x = x + 1
 
-#https://docs.python.org/3/library/zipfile.html
-#https://appdividend.com/2020/01/31/python-unzip-how-to-extract-single-or-multiple-files/ 
-#https://docs.python.org/3/library/gzip.html 
-#https://www.codegrepper.com/code-examples/python/how+to+extract+gz+file+python 
+#Downloading the MovieLens-Datasets
+x = 1
+for URL in URLs_GROUP_LENS:
+    start = datetime.datetime.now()
+    print("Download " + str(x) + " from " + URL + " @" + str(start))
+    r = requests.get(URL, allow_redirects=True)
+    print("---" + "Status-Code: " + str(r.status_code) + "---")
+    if r.status_code == 200:
+        open(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS, 'wb').write(r.content)
+        print("--- Start unzip ---")    
+        try:
+            with ZipFile('Mail3.zip', 'r') as zipObj:
+                zipObj.extractall()
+        except: print("Something went wrong")
+        finally: os.remove(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS)     
+        print("--- End unzip ---")
+        print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60), 2) + "min ---")
+    else: print("Download failed")
+    x = x + 1
