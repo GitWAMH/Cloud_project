@@ -22,9 +22,6 @@ URLs_GROUP_LENS = ["https://files.grouplens.org/datasets/movielens/ml-100k.zip",
                    "https://files.grouplens.org/datasets/movielens/ml-20m.zip"]
 NAMEs_ROUP_LENS = ["MovieLens 100K Dataset ", "MovieLens 1M Dataset", "20M Dataset"]
 TYP_ARCHIVE_ROUP_LENS = ".zip"
-#TYPE_DATA_ROUP_LENS = ""
-
-URLs_Movie_Lense = {}
 
 #Downloading the IMDb-Datasets
 x = 1
