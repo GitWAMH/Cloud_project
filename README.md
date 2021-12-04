@@ -4,7 +4,7 @@ Nuestro proyecto consiste en un programa capaz de recomendar películas de acuer
 Para ello, el usuario debe especificar siempre sobre qué tipo de dataset quiere consultar. El recomendador puede realizar recomendaciones en base a los datasets de las páginas web de MovieLens (https://grouplens.org/datasets/movielens/) e IMDb (https://www.imdb.com/interfaces/). 
 
 ## Descarga de archivos
-Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_ y los datasets en la carpeta _datasets_.
+Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido alelevado tamaño de los datasets empleados (más de 1 GB en total entre todos), hemos tenido que crear un script de Python que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún
 
 Antes que nada, es necesario descargar ambas carpetas y descomprimirlas en local. Una vez descomprimidas, es necesario mover todo el contenido de la carpeta _datasets_ (es decir, todos los datasets) a la carpeta _scripts_. Después de realizar la descarga y mover todos los archivos a la carpeta _scripts_, comienza la preparacion del entorno.
 
