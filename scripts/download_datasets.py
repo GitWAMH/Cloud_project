@@ -28,8 +28,9 @@ x = 1
 for URL in URLs_IMDb:
     start = datetime.datetime.now()
     print("Download " + str(x) + " from " + URL + " @" + str(start))
+    print("Wait...")
     r = requests.get(URL, allow_redirects=True)
-    print("---" + "Status-Code: " + str(r.status_code) + "---")
+    print("--- " + "Status-Code: " + str(r.status_code) + " ---")
     if r.status_code == 200:
         open(NAMEs_IMDb[x - 1] + TYP_ARCHIVE_IMDb, 'wb').write(r.content)
         print("--- Start unzip ---")    
@@ -42,14 +43,14 @@ for URL in URLs_IMDb:
                 with gzip.open(NAMEs_IMDb[x - 1] + TYP_ARCHIVE_IMDb, 'rb') as f_in:
                     with open("data.tsv", 'wb') as f_out:
                         shutil.copyfileobj(f_in, f_out)
-                os.rename("data.tsv", NAMEs_IMDb[x] + TYPE_DATA_IMDb)
+                os.rename("data.tsv", NAMEs_IMDb[x - 1] + TYPE_DATA_IMDb)
                 #Checking if the size is bigger then 0
-                if os.stat(NAMEs_IMDb[x] + TYPE_DATA_IMDb).st_size > 0: print("--> Succesfull download + unzip")  
+                if os.stat(NAMEs_IMDb[x - 1] + TYPE_DATA_IMDb).st_size > 0: print("--> Succesfull download + unzip")  
                 else: print("Check data: The size is 0")
         except: print("Something went wrong")
         finally: os.remove(NAMEs_IMDb[x - 1] + TYP_ARCHIVE_IMDb)     
         print("--- End unzip ---")
-        print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60), 2) + "min ---")
+        print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60)) + "min ---")
     else: print("Download failed")
     x = x + 1
 
@@ -58,8 +59,9 @@ x = 1
 for URL in URLs_GROUP_LENS:
     start = datetime.datetime.now()
     print("Download " + str(x) + " from " + URL + " @" + str(start))
+    print("Wait...")
     r = requests.get(URL, allow_redirects=True)
-    print("---" + "Status-Code: " + str(r.status_code) + "---")
+    print("--- " + "Status-Code: " + str(r.status_code) + " ---")
     if r.status_code == 200:
         open(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS, 'wb').write(r.content)
         print("--- Start unzip ---")    
@@ -69,6 +71,6 @@ for URL in URLs_GROUP_LENS:
         except: print("Something went wrong")
         finally: os.remove(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS)     
         print("--- End unzip ---")
-        print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60), 2) + "min ---")
+        print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60)) + "min ---")
     else: print("Download failed")
     x = x + 1
