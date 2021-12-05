@@ -48,16 +48,18 @@ $ deactivate
 ```
 ## Módulos necesarios e importación
 Para poder ejecutar los scripts correctamente, es necesario importar los siguientes módulos de Python:
-        * Módulo os
-        * Módulo requests
-        * Módulo requests
-        * Módulo datetime
-        * Módulo gzip
-        * Módulo shutil
-        * Módulo zipfile
-        * Módulo pyspark
-        * Módulo sys
-        * Módulo re
+
+* Módulo os
+* Módulo requests
+* Módulo requests
+* Módulo datetime
+* Módulo gzip
+* Módulo shutil
+* Módulo zipfile
+* Módulo pyspark
+* Módulo sys
+* Módulo re
+        
 Para importar estos módulos y revisar si han sido correctamente importados, debe seguir esta serie de pasos:
 Debe activar el ambiente de Python con los comandos mencionados anteriormente.
 
@@ -109,6 +111,7 @@ $ spark-submit <nombre_archivo.py> [argumentos]
 Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido alelevado tamaño de los datasets empleados (más de 1 GB en total entre todos), hemos tenido que crear un script de Python que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _downloads_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecuación de la aplicación.
 
 ## Ejecución
+
 
 ## Links
 * Github Pages
