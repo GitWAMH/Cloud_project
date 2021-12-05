@@ -16,8 +16,8 @@ movies_to_show = 5 if len(sys.argv)<4 else int(sys.argv[3])
 # When the user wants to use the MovieLens datasets
 if mode == '-m':
 #Obtains the dataframes from the datasets ratings.csv and movies.csv
-        df1 = spark.read.option('header','true').csv('ratings.csv')
-        df2 = spark.read.option('header','true').csv('movies.csv')
+        df1 = spark.read.option('header','true').csv('ml-20m/ratings.csv')
+        df2 = spark.read.option('header','true').csv('ml-20m/movies.csv')
 
         list_movies = df1.join(df2,'movieId','rightouter') \
                 .withColumn('rating', col('rating').cast('float')) \

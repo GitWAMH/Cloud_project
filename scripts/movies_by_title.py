@@ -16,8 +16,8 @@ else:
 	title = sys.argv[1]
 
 	#Search in CSV
-	moviesDF = spark.read.csv('movies.csv', header = True)
-	ratingsDF = spark.read.csv('ratings.csv', header = True)
+	moviesDF = spark.read.csv('ml-20m/movies.csv', header = True)
+	ratingsDF = spark.read.csv('ml-20m/ratings.csv', header = True)
 	matchedMovies = moviesDF.join(ratingsDF, 'movieId')\
 			.withColumn('rating', ratingsDF.rating.cast('float'))\
 			.where(lower(moviesDF.title).contains(title.lower()))\
