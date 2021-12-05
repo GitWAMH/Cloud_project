@@ -47,7 +47,9 @@ for URL in URLs_IMDb:
                 #Checking if the size is bigger then 0
                 if os.stat(NAMEs_IMDb[x - 1] + TYPE_DATA_IMDb).st_size > 0: print("--> Succesfull download + unzip")  
                 else: print("Check data: The size is 0")
-        except: print("Something went wrong")
+        except Exception as ex: 
+            print("Something went wrong")
+            print(type(ex))
         finally: os.remove(NAMEs_IMDb[x - 1] + TYP_ARCHIVE_IMDb)     
         print("--- End unzip ---")
         print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60)) + "min ---")
@@ -68,7 +70,9 @@ for URL in URLs_GROUP_LENS:
         try:
             with ZipFile(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS, 'r') as zipObj:
                 zipObj.extractall()
-        except: print("Something went wrong")
+        except Exception as ex: 
+            print("Something went wrong")
+            print(type(ex))
         finally: os.remove(NAMEs_ROUP_LENS[x - 1] + TYP_ARCHIVE_ROUP_LENS)     
         print("--- End unzip ---")
         print("--- Needed-Time: " + str(round((datetime.datetime.now() - start).total_seconds()/60)) + "min ---")
