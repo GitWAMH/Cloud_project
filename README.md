@@ -51,7 +51,6 @@ Para poder ejecutar los scripts correctamente, es necesario importar los siguien
 
 * Módulo os
 * Módulo requests
-* Módulo requests
 * Módulo datetime
 * Módulo gzip
 * Módulo shutil
