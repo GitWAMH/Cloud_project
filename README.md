@@ -48,10 +48,17 @@ $ deactivate
 ```
 ## Módulos necesarios e importación
 Para poder ejecutar los scripts correctamente, es necesario importar los siguientes módulos de Python:
-	*
-	*
-	*
 
+* Módulo os
+* Módulo requests
+* Módulo datetime
+* Módulo gzip
+* Módulo shutil
+* Módulo zipfile
+* Módulo pyspark
+* Módulo sys
+* Módulo re
+        
 Para importar estos módulos y revisar si han sido correctamente importados, debe seguir esta serie de pasos:
 Debe activar el ambiente de Python con los comandos mencionados anteriormente.
 
@@ -65,7 +72,7 @@ Una vez se ha cargado al shell de Python, escribimos el siguiente comando para r
 ```
 Si no se muestra ningún mensaje, eso significa que el módulo esta instalado correctamente.
 Si sale un mensaje de error, entonces el módulo no está importado. 
-Para importar un módulo es necesario salir de la Shell de Python, y ejecutar en la terminal del WSL.
+Para importar un módulo es necesario salir de la Shell de Python e instalar el módulo con el comando pip:
 ```
 $ pip install <module_name>
 ```
@@ -100,11 +107,10 @@ $ spark-submit <nombre_archivo.py> [argumentos]
 ```
 ## Descarga de archivos
 
-Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido alelevado tamaño de los datasets empleados (más de 1 GB en total entre todos), hemos tenido que crear un script de Python que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _downloads_datasets.py_ para poder descargar los datasets en local.
-
-Después de realizar la descarga y tener todos los datasets en la carpeta _scripts_, ya se puede ejecutar el resto de scripts de Python.
+Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido al elevado tamaño de los datasets empleados (más de 1 GB en total entre todos), se ha creado un script de Python llamado _download_datasets.py_ que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _downloads_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecuación de la aplicación.
 
 ## Ejecución
+
 
 ## Links
 * Github Pages
