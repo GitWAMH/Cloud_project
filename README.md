@@ -72,7 +72,7 @@ Una vez se ha cargado al shell de Python, escribimos el siguiente comando para r
 ```
 Si no se muestra ningún mensaje, eso significa que el módulo esta instalado correctamente.
 Si sale un mensaje de error, entonces el módulo no está importado. 
-Para importar un módulo es necesario salir de la Shell de Python, y ejecutar en la terminal del WSL.
+Para importar un módulo es necesario salir de la Shell de Python e instalar el módulo con el comando pip:
 ```
 $ pip install <module_name>
 ```
