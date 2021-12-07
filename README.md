@@ -11,7 +11,7 @@ $ sudo apt update
 ```
 Después necesitamos actualizarlos en el sistema para así poder tener la versión más moderna:
 ```
-sudo apt -y upgrade
+$ sudo apt -y upgrade
 ```
 La opción -y se usa para que automáticamente se acepte todos los archivos que se están descargando. Aún así, cabe la posibilidad de que existan algunos paquetes que requieran de una aprobación explícita del usuario.
 
@@ -32,7 +32,7 @@ $ sudo apt install -y python3-pip
 Esto permite utilizar tanto el comando pip, como pip3 para instalar y gestionar módulos.
 Una vez instalado la el comando pip, es necesario establecer un ambiente virtual de Python, para ello, se tiene que instalar el módulo _venv_ mediante este comando:
 ```
-$sudo apt install -y python3-venv
+$ sudo apt install -y python3-venv
 ```
 Después, el usuario debe escoger qué carpeta quiere usar para esteblecer el ambiente de programación de Python. Puede ser cualquier carpeta. En nuestro ejemplo, usaremos una carpeta que se llama _environments_. Hay que entrar a la carpeta (```$ cd environments```) y ya dentro de la carpeta, se ejecuta el siguiente comando para establecer el ambiente de Python:
 ```
