@@ -20,7 +20,7 @@ TYPE_DATA_IMDb = ".tsv"
 URLs_GROUP_LENS = ["https://files.grouplens.org/datasets/movielens/ml-100k.zip",
                    "https://files.grouplens.org/datasets/movielens/ml-1m.zip",
                    "https://files.grouplens.org/datasets/movielens/ml-20m.zip"]
-NAMEs_ROUP_LENS = ["MovieLens_100K_Dataset ", "MovieLens_1M_Dataset", "20M_Dataset"]
+NAMEs_ROUP_LENS = ["ml-100k", "ml-1m", "ml-20m"]
 TYP_ARCHIVE_ROUP_LENS = ".zip"
 
 #Downloading the IMDb-Datasets
