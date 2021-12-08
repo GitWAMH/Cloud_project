@@ -37,7 +37,7 @@ else:
 				.sort('averageRating', ascending = False)
 		
 		if not matchedMovies.rdd.isEmpty():
-			matchedMovies.select('title', 'avg(rating)').show()
+			matchedMovies.select('title', 'averageRating').show()
 		else:
 			print('No results were found for the movie \'' + title + '\'')
 		
