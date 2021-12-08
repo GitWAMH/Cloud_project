@@ -73,7 +73,7 @@ def year_region():
      print('You selected \'Best movies by year and region\'')
      data = input('Enter a year or a language: ')
      num = input('Enter the number of movies you want to be shown(Optional): ')
-     os.system('spark-submit worth_movie.py \'' + data + '\' ' + num)
+     os.system('spark-submit year_region_recommendations.py \'' + data + '\' ' + num)
 
 if __name__=='__main__':
     while(True):
