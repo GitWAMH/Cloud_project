@@ -105,6 +105,44 @@ Tras esto, podrá ejecutar cualquiera de los scripts de la aplicación a través
 ```
 $ spark-submit <nombre_archivo.py> [argumentos]
 ```
+
+## Argumentos de cada script
+
+Para ejecutar correctamente cada script necesita de unos argumentos (diferentes para cada uno). En este apartado detallamos los argumentos a introducir en cada script:
+* adult_child_movies.py:
+    * Opción: -a para buscar películas para adultos o -c para buscar películas para niños.
+    * El número de películas que quieres que se muestren (Opcional).
+* best_rated_movies_by_year.py:
+    * Modo: -m para buscar en los datasets de MovieLens o -i para buscar en los datasets de IMDb.
+    * El año al que pertenecen las películas que se buscan.
+    * El número de películas que quieres que se muestren (Opcional).
+* best_runtime.py (Todos los argumentos de este script son opcionales, ya que cuenta con valores por defecto):
+    * El nivel de valoración requerido.
+    * El tiempo de duración mínimo.
+    * El tiempo de duración máximo.
+    * Un argumento que especifica cómo se ordena la lista resultante, que puede ser:
+        * -avg: la duración media.
+        * -max: la duración máxima.
+        * -min: la duración mínima.
+        * -sum: el sumatorio de duraciones.
+* download_datasets: no necesita ningún argumento.
+* getRatingsPerImdbType.py:
+    * -h o -help para visualizar los tipos de IMDb entre los que elegir.
+    * El tipo de IMDb con el que se quiere filtrar.
+    * El nivel de valoración.
+    * El número de recomendaciones que se mostrarán por pantalla.
+* movies_by_genre.py:
+    * Modo: -m para buscar en los datasets de MovieLens o -i para buscar en los datasets de IMDb.
+    * El género cinematográfico por el que se filtrarán las películas.
+    * El número de películas que quieres que se muestren (Opcional).
+* movies_by_title.py:
+    * El título de la película que quieres buscar.
+* worth_movie.py:
+    * El título de la película por el que quieres consultar si vale la pena. 
+* year_region_recommendations.py:
+    * El año o la región sobre la que se quiere consultar.
+    * El número de películas que quieres que se muestren (Opcional).
+
 ## Descarga de archivos
 
 Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido al elevado tamaño de los datasets empleados (más de 1 GB en total entre todos), se ha creado un script de Python llamado _download_datasets.py_ que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _downloads_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecuación de la aplicación.
