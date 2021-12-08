@@ -145,10 +145,20 @@ Para ejecutar correctamente cada script necesita de unos argumentos (diferentes 
 
 ## Descarga de archivos
 
-Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido al elevado tamaño de los datasets empleados (más de 1 GB en total entre todos), se ha creado un script de Python llamado _download_datasets.py_ que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _downloads_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecuación de la aplicación.
+Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido al elevado tamaño de los datasets empleados (más de 1 GB en total entre todos), se ha creado un script de Python llamado _download_datasets.py_ que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _download_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecuación de la aplicación.
 
 ## Ejecución
 
+Para ejecutar nuestros scripts de manera individual puede utilizarse el comando:
+```
+$ spark-submit <nombre_archivo.py> [argumentos]
+```
+
+Los scripts se ejecutan en Spark en modo local y utilizamos la opción master de SparkSession.builder para elegir el modo de ejecución, cuyo parámetro es la URL del Spark master:
+* Local: Ejecuta localmente.
+* Local[N]: Ejecuta localmente utilizando N cores.
+* Local[*]: Ejecuta localmente utilizando todos los cores disponibles de la máquina.
+* La URL del cluster de spark sobre el que se quiere ejecutar el script (Ej.:“spark://master:7077”).
 
 ## Links
 * Github Pages
