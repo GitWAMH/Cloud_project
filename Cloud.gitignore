@@ -1,3 +1,6 @@
-# Datasets
+# Datasets will be  not uploaded to github
 *.tsv
+ml-1m/
+ml-20m/
+ml-100k/
 
