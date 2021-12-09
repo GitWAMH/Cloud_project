@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from pyspark import *
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, IntegerType, DoubleType, BooleanType
