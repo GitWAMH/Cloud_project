@@ -10,7 +10,7 @@ URLs_IMDb = ["https://datasets.imdbws.com/name.basics.tsv.gz",
              "https://datasets.imdbws.com/title.akas.tsv.gz",
              "https://datasets.imdbws.com/title.basics.tsv.gz",
              "https://datasets.imdbws.com/title.crew.tsv.gz",
-             "https://datasets.imdbws.com/title.episode.tsv.gz"
+             "https://datasets.imdbws.com/title.episode.tsv.gz",
              "https://datasets.imdbws.com/title.principals.tsv.gz",
              "https://datasets.imdbws.com/title.ratings.tsv.gz"]
 NAMEs_IMDb = ["name.basics", "title.akas", "title.basics", "title.crew", "title.episode", "title.principals", "title.ratings"]
