@@ -34,9 +34,13 @@ Una vez instalado la el comando pip, es necesario establecer un ambiente virtual
 ```
 $ sudo apt install -y python3-venv
 ```
+Para poder usar el comando python en lugar de python3 es necesario instalar un paquete llamado python-is-python3, ejecutando:
+```
+$ sudo apt install python-is-python3
+```
 Después, el usuario debe escoger qué carpeta quiere usar para esteblecer el ambiente de programación de Python. Puede ser cualquier carpeta. En nuestro ejemplo, usaremos una carpeta que se llama _environments_. Hay que entrar a la carpeta (```$ cd environments```) y ya dentro de la carpeta, se ejecuta el siguiente comando para establecer el ambiente de Python:
 ```
-$ python3 -m venv my_env
+$ python -m venv my_env
 ```
 Tras esto, cada vez que el usuario quiera activar el ambiente de Python, debe activar el siguiente comando:
 ```
@@ -58,6 +62,7 @@ Para poder ejecutar los scripts correctamente, es necesario importar los siguien
 * Módulo pyspark
 * Módulo sys
 * Módulo re
+* Módulo pyfiglet
         
 Para importar estos módulos y revisar si han sido correctamente importados, debe seguir esta serie de pasos:
 Debe activar el ambiente de Python con los comandos mencionados anteriormente.
@@ -145,7 +150,7 @@ Para ejecutar correctamente cada script necesita de unos argumentos (diferentes 
 
 ## Descarga de archivos
 
-Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido al elevado tamaño de los datasets empleados (más de 1 GB en total entre todos), se ha creado un script de Python llamado _download_datasets.py_ que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _script_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, deba ejecutar el script _download_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecuación de la aplicación.
+Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scripts_. Con respecto a los datasets, debido al elevado tamaño de los datasets empleados (más de 1 GB en total entre todos), se ha creado un script de Python llamado _download_datasets.py_ que, al ejecutarlo, descargará todos los datasets de sus páginas originales a la carpeta _scripts_ en el directorio local del usuario. Por ello, es necesario que el usuario, antes de ejecutar algún script, ejecute el script _download_datasets.py_ para poder descargar los datasets en local. Después de ejecutar este script, se puede comenzar la ejecución de la aplicación.
 
 ## Ejecución
 
@@ -153,6 +158,26 @@ Para ejecutar nuestros scripts de manera individual puede utilizarse el comando:
 ```
 $ spark-submit <nombre_archivo.py> [argumentos]
 ```
+Sin embargo una opción más simple es utilizar el script _main.py_ que contiene un menú con el que interactuar de forma más sencilla con los scripts. Esto se haría ejecutando:
+```
+$ python main.py
+```
+Se mostrará por pantalla un menú como éste:
+```
+0 -- Download Datasets (Essential)
+1 -- Movies for adults or children
+2 -- Best rated movies by year
+3 -- Best runtime
+4 -- Ratings per IMDb type
+5 -- Best movies from a given genre
+6 -- Best movies from a given title
+7 -- Is it worth to watch this movie?
+8 -- Best movies by year and region
+9 -- Exit
+Enter your choice: 
+```
+El usuario únicamente tiene que elegir el número de la opción que quiera ejecutar e introducir los argumentos requeridos, pudiendo dejar en blanco los opcionales. Antes de ejecutar cualquier script, es imprescindible descargar los datasets ejecutando el script _download_datasets.py_ o bien desde el propio menú con la opción cero.
+
 
 Los scripts se ejecutan en Spark en modo local y utilizamos la opción master de SparkSession.builder para elegir el modo de ejecución, cuyo parámetro es la URL del Spark master:
 * Local: Ejecuta localmente.
