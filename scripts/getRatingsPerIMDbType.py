@@ -13,6 +13,8 @@ spark = SparkSession.builder \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()
 
+spark.sparkContext.setLogLevel("ERROR")
+
 df1_drop_cols = ("attributes", "language", "isOriginalTitle", "region")
 df1 = spark.read.option('header', 'true').csv("title.akas.tsv", sep=r'\t')
 df1 = df1.withColumn("titleId", col("titleId").cast(StringType()))\
