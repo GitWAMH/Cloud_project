@@ -7,6 +7,7 @@ spark = SparkSession\
 		.appName("Movies by title")\
 		.getOrCreate()
 
+spark.sparkContext.setLogLevel('ERROR')
 
 if len(sys.argv) != 2:
 
@@ -41,3 +42,4 @@ else:
 		else:
 			print('No results were found for the movie \'' + title + '\'')
 		
+

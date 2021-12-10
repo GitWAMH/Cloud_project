@@ -6,12 +6,12 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import StringType, IntegerType, DoubleType, BooleanType
 from pyspark.sql.functions import col
 
-
 spark = SparkSession.builder \
-        .master("local") \
         .appName("best_runtime") \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()
+
+spark.sparkContext.setLogLevel('ERROR')
 
 df1_drop_cols = ("attributes", "language", "isOriginalTitle", "region")
 df1 = spark.read.option('header', 'true').csv("title.akas.tsv", sep=r'\t')
@@ -113,3 +113,4 @@ elif (len(sys.argv) == 5):
                 DF_agg.printSchema()
                 #Check the output format
                 DF_agg.show()
+

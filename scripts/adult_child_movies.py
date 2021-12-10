@@ -7,7 +7,9 @@ import re
 
 conf = SparkConf().setAppName('Adult_child_movies')
 sc = SparkContext(conf=conf)
-spark = SparkSession.builder.master('local').appName('SparkSQL').getOrCreate()
+
+spark = SparkSession.builder.appName('SparkSQL').getOrCreate()
+spark.sparkContext.setLogLevel('ERROR')
 
 #Obtains the genre and the number of movies to show by arguments.
 adult = -1
@@ -35,3 +37,4 @@ if adult != -1:
 	print(list_movies)
 else:
 	print('Option not selected\n');
+

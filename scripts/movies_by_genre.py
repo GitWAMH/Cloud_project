@@ -11,7 +11,9 @@ import re
 
 conf = SparkConf().setAppName('Movies_by_genre')
 sc = SparkContext(conf=conf)
-spark = SparkSession.builder.master('local').appName('SparkSQL').getOrCreate()
+
+spark = SparkSession.builder.appName('SparkSQL').getOrCreate()
+spark.sparkContext.setLogLevel('ERROR')
 
 #Obtains the genre and the number of movies to show by arguments. If the number of movies is not given by the user, 5 is chosen by default
 mode = sys.argv[1]

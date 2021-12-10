@@ -8,10 +8,11 @@ import sys
 
 #Related to IMDb-Dataset
 spark = SparkSession.builder \
-        .master("local") \
         .appName("getRatingPerIMDbType") \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()
+
+spark.sparkContext.setLogLevel('ERROR')
 
 df1_drop_cols = ("attributes", "language", "isOriginalTitle", "region")
 df1 = spark.read.option('header', 'true').csv("title.akas.tsv", sep=r'\t')
@@ -71,3 +72,4 @@ except Exception as ex:
         print("<IMDb-Type> <Rating_level | [double]> <count_of_recommandations | [int]>\n\n")
         print("For advancted users: ")
         print(type(ex))
+
