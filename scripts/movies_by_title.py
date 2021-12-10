@@ -26,7 +26,7 @@ else:
 			.sort('avg(rating)', ascending = False)
 	
 	if not matchedMovies.rdd.isEmpty():
-		matchedMovies.select('title', 'avg(rating)').show()
+		matchedMovies.select('title', 'avg(rating)').show(truncate = False)
 	#if it's not found in movies.csv, we search in title.basics.tsv
 	else:
 		moviesDF = spark.read.csv('title.basics.tsv', sep = r'\t', header = True)
@@ -38,7 +38,7 @@ else:
 				.sort('averageRating', ascending = False)
 		
 		if not matchedMovies.rdd.isEmpty():
-			matchedMovies.select('title', 'averageRating').show()
+			matchedMovies.select('primaryTitle', 'originalTitle', 'averageRating').show(truncate = False)
 		else:
 			print('No results were found for the movie \'' + title + '\'')
 		

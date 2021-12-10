@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import pyfiglet
 import os
   
@@ -42,7 +44,7 @@ def runtime():
      ratinglvl = input('Enter the rating level(Optional): ')
      minRun = input('Enter the minimum runtime(Optional): ')
      maxRun = input('Enter the maximum runtime(Optional): ')
-     arg = input('Enter an option to order the results(Oprional): ')
+     arg = input('Enter a command (-avg, -min, -max, -sum) (Optional): ')
      os.system('spark-submit best_runtime.py ' + ratinglvl + ' ' + minRun + ' ' + maxRun + ' ' + arg)
 
 def imdb_type():

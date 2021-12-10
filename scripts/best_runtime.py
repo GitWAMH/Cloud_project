@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from pyspark import *
 import sys
 from pyspark.sql import SparkSession
@@ -113,4 +112,3 @@ elif (len(sys.argv) == 5):
                 DF_agg.printSchema()
                 #Check the output format
                 DF_agg.show()
-

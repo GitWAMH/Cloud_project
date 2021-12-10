@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from pyspark import *
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, IntegerType, DoubleType, BooleanType
@@ -72,4 +71,3 @@ except Exception as ex:
         print("<IMDb-Type> <Rating_level | [double]> <count_of_recommandations | [int]>\n\n")
         print("For advancted users: ")
         print(type(ex))
-
