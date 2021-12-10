@@ -48,6 +48,5 @@ elif mode == '-i':
 
 	print(list_movies)
 else:
-	print('Mode not selected\n');
-
+	print('Mode not selected\n')
 
