@@ -41,11 +41,13 @@ def by_year(master):
 
 def runtime(master):
      print('You selected \'Best runtime\'')
+     _show = input('Enter how many you wanna see(Optional): ')
      ratinglvl = input('Enter the rating level(Optional): ')
      minRun = input('Enter the minimum runtime(Optional): ')
      maxRun = input('Enter the maximum runtime(Optional): ')
      arg = input('Enter a command (-avg, -min, -max, -sum) (Optional): ')
-     os.system('spark-submit --master ' + master + ' best_runtime.py ' + ratinglvl + ' ' + minRun + ' ' + maxRun + ' ' + arg)
+     if arg != '': os.system('spark-submit --master ' + master + ' best_runtime.py ' + ratinglvl + ' ' + minRun + ' ' + maxRun + ' ' + arg + ' ' + _show)
+     else: os.system('spark-submit --master ' + master + ' best_runtime.py ' + ratinglvl + ' ' + minRun + ' ' + maxRun + ' ' + _show)
 
 def imdb_type(master):
      print('You selected \'Ratings per IMDb type\'')

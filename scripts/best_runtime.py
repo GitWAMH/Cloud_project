@@ -39,19 +39,22 @@ df3.unpersist()
 DF = joined_df.drop("tconst", "ordering", "titleID")
 
 rating_level = float(0.0)
-if len(sys.argv) == 4 or len(sys.argv) == 1:
+if len(sys.argv) == 5 or len(sys.argv) == 1:
         rating_level = ""
         runtime_min = ""
         runtime_max  = ""
+        count: ""
         try:
                 rating_level = float(sys.argv[1])
                 runtime_min = float(sys.argv[2])
                 runtime_max = float(sys.argv[3])
+                count = int(sys.argv[4])
         except:
                 print("No or wronge Input, default will be assumend")
                 rating_level = float(0.0)
                 runtime_min = float(1)
                 runtime_max = float(10000)
+                count = int(20)
         finally:
                 #Best movies in a given min./max. time 
                 Best_movie_runtime = DF.filter(DF.runtimeMinutes <= runtime_max)\
@@ -59,25 +62,28 @@ if len(sys.argv) == 4 or len(sys.argv) == 1:
                                         .filter(DF.averageRating >= rating_level)\
                                         .orderBy(DF.averageRating.desc(), DF.runtimeMinutes.desc())
                 #Check the output format
-                Best_movie_runtime.show()
+                Best_movie_runtime.show(count, False)
 
 #This is more for getting insides of the diffrent categories
-elif (len(sys.argv) == 5):
+elif (len(sys.argv) == 6):
         rating_level = ""
         runtime_min = ""
         runtime_max  = ""
         args = ""
+        count = ""
         try:
             rating_level = float(sys.argv[1])
             runtime_min = float(sys.argv[2])
             runtime_max = float(sys.argv[3])
             args = sys.argv[4]
+            count = int(sys.argv[5])
         except:
                 print("No or wronge Input, default will be assumend")
                 rating_level = float(0.0)
                 runtime_min = float(1)
                 runtime_max = float(10000)
                 args = "-avg"
+                count = int(20)
         finally:
                 #Agg's of rungtime 
                 if runtime_min != 0 or runtime_max != 0:
@@ -109,6 +115,4 @@ elif (len(sys.argv) == 5):
                 else: 
                         print("\n\nYou did not select a correct command!\nPossible: \n-avg \n-sum \n-min \n-max \n")
                         exit()
-                DF_agg.printSchema()
-                #Check the output format
-                DF_agg.show()
+                DF_agg.show(count, False)
