@@ -111,40 +111,41 @@ Tras esto, podrá ejecutar cualquiera de los scripts de la aplicación a través
 $ spark-submit <nombre_archivo.py> [argumentos]
 ```
 
-## Argumentos de cada script
+## Detalles de cada script
 
-Para ejecutar correctamente cada script necesita de unos argumentos (diferentes para cada uno). En este apartado detallamos los argumentos a introducir en cada script:
-* adult_child_movies.py:
+En esta sección se describe para qué sirve cada script y los argumentos que deben proporcionarse:
+* adult_child_movies.py. Devuelve, dependiendo del parámetro introducido, películas clasificadas para adultos o aptas para niños ordenadas por valoración. Los argumentos que usa son:
     * Opción: -a para buscar películas para adultos o -c para buscar películas para niños.
     * El número de películas que quieres que se muestren (Opcional).
-* best_rated_movies_by_year.py:
+* best_rated_movies_by_year.py. Devuelve las películas mejor valoradas de un año que se pasa por parámetro. Sus argumentos son:
     * Modo: -m para buscar en los datasets de MovieLens o -i para buscar en los datasets de IMDb.
     * El año al que pertenecen las películas que se buscan.
     * El número de películas que quieres que se muestren (Opcional).
-* best_runtime.py (Todos los argumentos de este script son opcionales, ya que cuenta con valores por defecto):
-    * El nivel de valoración requerido.
+* best_runtime.py. Devuelve las películas que tienen una duración dentro de los parámetros proporcionados por el usuario, ordenadas por valoración. Todos los argumentos de este script son opcionales, ya que cuenta con valores por defecto:
+    * La valoración mínima que el usuario espera.
     * El tiempo de duración mínimo.
     * El tiempo de duración máximo.
-    * Un argumento que especifica cómo se ordena la lista resultante, que puede ser:
+    * Un argumento que especifica información extra que se quiere mostrar, que puede ser:
         * -avg: la duración media.
         * -max: la duración máxima.
         * -min: la duración mínima.
         * -sum: el sumatorio de duraciones.
-* download_datasets: no necesita ningún argumento.
-* getRatingsPerImdbType.py:
+* download_datasets. Este script se utiliza para desacrgar los datasets que se van a procesar. No requiere de ningún argumento.
+* getRatingsPerImdbType.py. Devuelve las mejores películas que pertenecen a un tipo de IMDb, especificado por el usuario. Sus argumentos son:
     * -h o -help para visualizar los tipos de IMDb entre los que elegir.
     * El tipo de IMDb con el que se quiere filtrar.
     * El nivel de valoración.
     * El número de recomendaciones que se mostrarán por pantalla.
-* movies_by_genre.py:
+* main.py. Este script permite al usuario ejecutar cualquiera de los scripts de procesamiento de datos mediante un menú, así como seleccionar dónde quiere ejecutar esos scripts, de una manera más sencilla y sin usar comandos. No requiere de ningún argumento.
+* movies_by_genre.py. Devuelve las películas pertenecientes a un género, proporcionado por el usuario, ordenadas por valoración. Sus argumentos son:
     * Modo: -m para buscar en los datasets de MovieLens o -i para buscar en los datasets de IMDb.
     * El género cinematográfico por el que se filtrarán las películas.
     * El número de películas que quieres que se muestren (Opcional).
-* movies_by_title.py:
+* movies_by_title.py. Devuelve las películas que tienen un título que contiene las palabras proporcionadas por el usuario, ordenadas por valoración. Sus argumentos son:
     * El título de la película que quieres buscar.
-* worth_movie.py:
+* worth_movie.py. En base a las valoraciones de los usuarios, decide si una película merece o no la pena ver. Sus argumentos son:
     * El título de la película por el que quieres consultar si vale la pena. 
-* year_region_recommendations.py:
+* year_region_recommendations.py. Deveuelve las mejores películas de un año o una región proporcionada por el usuario. Sus argumentos son:
     * El año o la región sobre la que se quiere consultar.
     * El número de películas que quieres que se muestren (Opcional).
 
@@ -162,7 +163,19 @@ Sin embargo una opción más simple es utilizar el script _main.py_ que contiene
 ```
 $ python main.py
 ```
-Se mostrará por pantalla un menú como éste:
+Primero se deberá elegir si quiere ejecutar los scripts en local, con el número de cores que elija, o en un cluster:
+```
+Enter where do you want to run the application:
+1 -- Local
+2 -- Cluster
+Option:
+```
+Los scripts se pueden ejecutar de los siguientes modos:
+* Local[N]: Ejecuta localmente utilizando N cores.
+* Local[*]: Ejecuta localmente utilizando todos los cores disponibles de la máquina.
+* En un cluster proporcionando la URL del cluster de spark sobre el que se quiere ejecutar el script (Ej.:“spark://master:7077”).
+
+Después de elegir dónde ejecutar los scripts, se mostrará por pantalla un menú como éste:
 ```
 0 -- Download Datasets (Essential)
 1 -- Movies for adults or children
@@ -176,14 +189,17 @@ Se mostrará por pantalla un menú como éste:
 9 -- Exit
 Enter your choice: 
 ```
-El usuario únicamente tiene que elegir el número de la opción que quiera ejecutar e introducir los argumentos requeridos, pudiendo dejar en blanco los opcionales. Antes de ejecutar cualquier script, es imprescindible descargar los datasets ejecutando el script _download_datasets.py_ o bien desde el propio menú con la opción cero.
+El usuario únicamente tiene que escribir el número de la opción que quiera ejecutar e introducir los argumentos requeridos, pudiendo dejar en blanco los opcionales. Antes de ejecutar cualquier script, es imprescindible descargar los datasets ejecutando el script _download_datasets.py_ o bien desde el propio menú con la opción cero.
 
-
-Los scripts se ejecutan en Spark en modo local y utilizamos la opción master de SparkSession.builder para elegir el modo de ejecución, cuyo parámetro es la URL del Spark master:
-* Local: Ejecuta localmente.
-* Local[N]: Ejecuta localmente utilizando N cores.
-* Local[*]: Ejecuta localmente utilizando todos los cores disponibles de la máquina.
-* La URL del cluster de spark sobre el que se quiere ejecutar el script (Ej.:“spark://master:7077”).
+En caso de querer ejecutar los scripts en Google Cloud deben seguirse los siguientes pasos:
+1. Crear el Dataproc Cluster ejecutando este comando en el Cloud Shell:
+```
+$ gcloud dataproc clusters create example-cluster --enable-component-gateway --region europe-west6 --zone europe-west6-b --master-machine-type n1-standard-4 --master-boot-disk-size 50 --num-workers 2 --worker-machine-type n1-standard-4 --worker-boot-disk-size 50 --image-version 2.0-debian10
+```
+2. Crear un nuevo bucket en la sección Cloud Storage.
+3. Cargar todos los scripts en el Dataproc Cluster
+4. Cargar todos los ficheros en el bucket creado.
+5. Modificar todos los scripts de Python, cambiando el directorio de los datasets a _gs://<BUCKET_NAME>//<MOVIE_LENS_FOLDER_NAME>//<MOVIELENS_DATASET_NAME>_ o _gs://<BUCKET_NAME>//<IMDB_DATASET_NAME>_.
 
 ## Links
 * Github Pages
