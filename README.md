@@ -71,6 +71,10 @@ Para poder revisar si un módulo está instalado o no, hay que abrir primero la 
 ```
 $ python
 ```
+Si no funciona este comando, intenta con el siguiente comand:
+```
+$ python3
+```
 Una vez se ha cargado al shell de Python, escribimos el siguiente comando para revisar si el módulo está instalado o no:
 ```
 >> import <module_name>
@@ -162,6 +166,10 @@ $ spark-submit <nombre_archivo.py> [argumentos]
 Sin embargo una opción más simple es utilizar el script _main.py_ que contiene un menú con el que interactuar de forma más sencilla con los scripts. Esto se haría ejecutando:
 ```
 $ python main.py
+```
+Sino también se puede ejecutar con el siguiente comando:
+```
+$ python3 main.py
 ```
 Primero se deberá elegir si quiere ejecutar los scripts en local, con el número de cores que elija, o en un cluster:
 ```
