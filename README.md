@@ -171,19 +171,10 @@ Sino también se puede ejecutar con el siguiente comando:
 ```
 $ python3 main.py
 ```
-Primero se deberá elegir si quiere ejecutar los scripts en local, con el número de cores que elija, o en un cluster:
-```
-Enter where do you want to run the application:
-1 -- Local
-2 -- Cluster
-Option:
-```
-Los scripts se pueden ejecutar de los siguientes modos:
-* Local[N]: Ejecuta localmente utilizando N cores.
-* Local[*]: Ejecuta localmente utilizando todos los cores disponibles de la máquina.
-* En un cluster proporcionando la URL del cluster de spark sobre el que se quiere ejecutar el script (Ej.:“spark://master:7077”).
 
-Después de elegir dónde ejecutar los scripts, se mostrará por pantalla un menú como éste:
+Desde _main.py_ los scripts se ejecutan en Spark en modo local y antes de mostrar las opciones se pide al usuario que introduzca el número de cores de su procesador que desea utilizar para la ejecución. Si el usuario desea ejecutar la aplicación en Google Cloud, más adelante se explica cómo hacerlo.
+
+Después de elegir el número de cores, se mostrará por pantalla un menú como éste:
 ```
 0 -- Download Datasets (Essential)
 1 -- Movies for adults or children
@@ -199,7 +190,13 @@ Enter your choice:
 ```
 El usuario únicamente tiene que escribir el número de la opción que quiera ejecutar e introducir los argumentos requeridos, pudiendo dejar en blanco los opcionales. Antes de ejecutar cualquier script, es imprescindible descargar los datasets ejecutando el script _download_datasets.py_ o bien desde el propio menú con la opción cero.
 
-En caso de querer ejecutar los scripts en Google Cloud deben seguirse los siguientes pasos:
+Los scripts se ejecutan en Spark y se puede utilizar la opción SparkSession.builder.master para elegir el modo de ejecución, cuyo parámetro es la URL del Spark master:
+* Local: Ejecuta localmente.
+* Local[N]: Ejecuta localmente utilizando N cores.
+* Local[*]: Ejecuta localmente utilizando todos los cores disponibles de la máquina.
+* La URL del cluster de spark sobre el que se quiere ejecutar el script (Ej.:“spark://master:7077”).
+
+En caso de querer ejecutar los scripts en _Google Cloud_ deben seguirse los siguientes pasos:
 1. Crear el Dataproc Cluster ejecutando este comando en el Cloud Shell:
 ```
 $ gcloud dataproc clusters create example-cluster --enable-component-gateway --region europe-west6 --zone europe-west6-b --master-machine-type n1-standard-4 --master-boot-disk-size 50 --num-workers 2 --worker-machine-type n1-standard-4 --worker-boot-disk-size 50 --image-version 2.0-debian10
