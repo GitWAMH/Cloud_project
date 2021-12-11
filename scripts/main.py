@@ -86,8 +86,18 @@ if __name__=='__main__':
         except:
             print('Wrong input. Please enter a number ...')
         if masterOpt == 1:
-            cores = input('Enter the number of cores you want to use to run the application (\'*\' for all cores available): ')
-            master = 'local[' + cores + ']'
+            try:
+                inCores = input('Enter the number of cores you want to use to run the application (\'*\' for all cores available): ')
+                cores = int(inCores)
+                master = 'local[' + str(cores) + ']'
+                print('The scripts will be run in local with ' + str(cores) + ' cores.')
+            except:
+                if not inCores == '*':
+                    print('Wrong input. Please enter a number ...')
+                    masterOpt = 0
+                else:
+                    master = 'local[*]'
+                    print('The scripts will be run in local with all the cores available.')
         elif masterOpt == 2:
             cluster = input('Enter the URL of the cluster you want to use to run the application: ')
             master = cluster
