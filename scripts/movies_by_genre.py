@@ -56,4 +56,4 @@ elif mode == '-i':
 
 	print(list_movies)
 else:
-	print('No mode selected\n')
+	print('Error with the mode selection. Select -m to use the MovieLens datasets or -i to use the IMDb datasets\n')
