@@ -33,8 +33,8 @@ if adult != -1:
 		.rdd \
 		.map(lambda row: (row[1],row[3])) \
 		.collect()
-
+BB
 	print(list_movies)
 else:
-	print('Option not selected\n');
+	print('Option not selected\n')
 
