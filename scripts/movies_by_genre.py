@@ -16,9 +16,15 @@ spark = SparkSession.builder.appName('SparkSQL').getOrCreate()
 spark.sparkContext.setLogLevel('ERROR')
 
 #Obtains the genre and the number of movies to show by arguments. If the number of movies is not given by the user, 5 is chosen by default
-mode = sys.argv[1]
-genre = sys.argv[2]
-movies_to_show = 5 if len(sys.argv)<4 else int(sys.argv[3])
+mode = None
+genre= None
+movies_to_show = None
+if len(sys.argv)>=3:
+	mode = sys.argv[1]
+	genre = sys.argv[2]
+	movies_to_show = 5 if len(sys.argv)<4 else int(sys.argv[3])
+else:
+	print('Not enough parameters. The syntax should be movies_by_genre.py <mode> <genre> <movies_to_show>\n')
 # When the user wants to use the MovieLens datasets
 if mode == '-m': 
 #Obtains the dataframes from the datasets ratings.csv and movies.csv
