@@ -32,9 +32,9 @@ if (len(sys.argv) > 1):
         df=spark.read.csv("title.akas.tsv", sep=r'\t',header=True)
         movies = df.select(df["title"], df["titleId"]).where(df["region"] == region)
         if movies.count() == 0:
-            df.select(df["region"]).distinct().collect()
+            rdd = df.select(df["region"]).distinct().rdd.map(lambda row: (row[0])).collect()
             print("Region not found. These are the regions available:\n")
-
+            print(rdd)
 
         else:
             ratings=spark.read.csv("title.ratings.tsv", sep=r'\t', header=True)
