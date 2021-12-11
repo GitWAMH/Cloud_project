@@ -80,31 +80,25 @@ def year_region(master):
      os.system('spark-submit --master ' + master + ' year_region_recommendations.py \'' + data + '\' ' + num)
 
 if __name__=='__main__':
-    masterOpt = 0
+    
     master = ''
-    while (not (masterOpt == 1 or masterOpt == 2)):
+    print('The scripts will be submited to Spark in local mode. In order to submit them in the cloud, please follow the steps described in README.md file.')
+    
+    while not master:
         try:
-            masterOpt = int(input('Enter where do you want to run the application:\n1 -- Local\n2 -- Cluster\nOption: '))
+            inCores = input('Enter the number of cores you want to use to run the application (\'*\' for all cores available): ')
+            cores = int(inCores)
+            if cores > 0:
+            	master = 'local[' + str(cores) + ']'
+            	print('The scripts will be run locally with ' + str(cores) + ' cores.')
+            else:
+            	print('Invalid number. The number of cores must be greater or equal to 1')
         except:
-            print('Wrong input. Please enter a number ...')
-        if masterOpt == 1:
-            try:
-                inCores = input('Enter the number of cores you want to use to run the application (\'*\' for all cores available): ')
-                cores = int(inCores)
-                master = 'local[' + str(cores) + ']'
-                print('The scripts will be run in local with ' + str(cores) + ' cores.')
-            except:
-                if not inCores == '*':
-                    print('Wrong input. Please enter a number ...')
-                    masterOpt = 0
-                else:
-                    master = 'local[*]'
-                    print('The scripts will be run in local with all the cores available.')
-        elif masterOpt == 2:
-            cluster = input('Enter the URL of the cluster you want to use to run the application: ')
-            master = cluster
-        else:
-            print('Invalid option. Please enter 1 for Local or 2 for Cluster')
+            if not inCores == '*':
+                print('Wrong input. Please enter a number or \'*\' ...')
+            else:
+                master = 'local[*]'
+                print('The scripts will be run locally with all the cores available.')
 
     while(True):
         print_menu()
