@@ -29,7 +29,7 @@ if mode == '-m':
 		.withColumn('genre',explode(split(col('genres'),'\\,'))) \
 		.withColumn('rating', df1['rating'].cast('float')) \
 		.select('movieId', 'rating', 'title', 'genre') \
-		.filter(col('genre')==genre) \
+		.filter(lower(col('genre'))==genre.lower()) \
 		.groupBy('movieId','title').avg('rating') \
 		.orderBy(col('avg(rating)').desc(),col('title').asc()) \
 		.limit(movies_to_show) \
@@ -47,7 +47,7 @@ elif mode == '-i':
 		.withColumn('genre',explode(split(col('genres'),'\\|'))) \
 		.withColumn('rating', col('averageRating').cast('float')) \
 		.select('tconst', 'averageRating', 'originalTitle', 'genre') \
-		.filter(col('genre')==genre) \
+		.filter(lower(col('genre'))==genre.lower()) \
 		.orderBy(col('averageRating').desc(),col('originalTitle').asc()) \
 		.limit(movies_to_show) \
 		.rdd \
