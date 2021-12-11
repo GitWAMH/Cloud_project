@@ -199,7 +199,7 @@ $ gcloud dataproc clusters create example-cluster --enable-component-gateway --r
 2. Crear un nuevo bucket en la sección Cloud Storage.
 3. Cargar todos los scripts en el Dataproc Cluster
 4. Cargar todos los ficheros en el bucket creado.
-5. Modificar todos los scripts de Python, cambiando el directorio de los datasets a _gs://<BUCKET_NAME>//<MOVIE_LENS_FOLDER_NAME>//<MOVIELENS_DATASET_NAME>_ o _gs://<BUCKET_NAME>//<IMDB_DATASET_NAME>_.
+5. Modificar todos los scripts de Python, cambiando el directorio de los datasets a _gs://<BUCKET_NAME>/<MOVIE_LENS_FOLDER_NAME>/<MOVIELENS_DATASET_NAME>_ o _gs://<BUCKET_NAME>/<IMDB_DATASET_NAME>_.
 
 ## Links
 Link de la página web en Github Pages: https://rafalonsog.github.io/group7.github.io/
