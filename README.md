@@ -202,7 +202,4 @@ $ gcloud dataproc clusters create example-cluster --enable-component-gateway --r
 5. Modificar todos los scripts de Python, cambiando el directorio de los datasets a _gs://<BUCKET_NAME>//<MOVIE_LENS_FOLDER_NAME>//<MOVIELENS_DATASET_NAME>_ o _gs://<BUCKET_NAME>//<IMDB_DATASET_NAME>_.
 
 ## Links
-* Github Pages
-  * Documentación: https://pages.github.com/
-  * Documentación: https://docs.github.com/en/pages 
-  * Link de la página web: https://softwarestacklukas.github.io/group7.github.io/ 
+Link de la página web en Github Pages: https://rafalonsog.github.io/group7.github.io/
