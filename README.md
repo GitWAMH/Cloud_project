@@ -134,6 +134,7 @@ En esta sección se describe para qué sirve cada script y los argumentos que de
         * -max: la duración máxima.
         * -min: la duración mínima.
         * -sum: el sumatorio de duraciones.
+        * El número de recomendaciones que se mostrarán por pantalla.
 * download_datasets. Este script se utiliza para desacrgar los datasets que se van a procesar. No requiere de ningún argumento.
 * getRatingsPerImdbType.py. Devuelve las mejores películas que pertenecen a un tipo de IMDb, especificado por el usuario. Sus argumentos son:
     * -h o -help para visualizar los tipos de IMDb entre los que elegir.
