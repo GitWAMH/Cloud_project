@@ -4,7 +4,6 @@ import sys
 from pyspark.sql import SparkSession
 from pyspark.sql.types import NullType
 spark = SparkSession.builder \
-        .master("local") \
         .appName("Anio e idioma Pelicula") \
         .config("spark.some.config.option", "some-value") \
         .getOrCreate()
