@@ -208,4 +208,5 @@ $ gcloud dataproc clusters create example-cluster --enable-component-gateway --r
 
 ## Links
 Link de la página web en Github Pages: https://rafalonsog.github.io/group7.github.io/
+
 Link del repositorio de la página web: https://github.com/rafalonsog/group7.github.io/tree/Draft
