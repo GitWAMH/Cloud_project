@@ -159,7 +159,7 @@ Todos nuestros scripts de tratamiento de datos se encuentran en la carpeta _scri
 
 ## Ejecución
 
-Para ejecutar nuestros scripts de manera individual puede utilizarse el comando:
+Para ejecutar nuestros scripts (incluyendo el _download_datasets.py_) de manera individual puede utilizarse el comando:
 ```
 $ spark-submit <nombre_archivo.py> [argumentos]
 ```
