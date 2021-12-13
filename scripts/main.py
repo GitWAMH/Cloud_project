@@ -24,7 +24,7 @@ def print_menu():
 
 def download():
      print('Starting Download...')
-     os.system('python download_datasets.py')
+     os.system('python download_datasets.py || python3 download_datasets.py')
 
 def adult_child(master):
      print('You selected \'Movies for adults or children\'')
