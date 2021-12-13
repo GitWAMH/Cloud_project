@@ -46,7 +46,7 @@ if (len(sys.argv) > 1):
             #     num = sys.argv[3]
             else:
                 num = 10
-            bestMovies.show(num)        
+            bestMovies.show(int(num))        
 
 else:
     print("Invalid arguments: The user must provide a year or language to search")
